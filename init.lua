@@ -229,7 +229,7 @@ require('lazy').setup({
   --    Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {})
 
 -- [[ Setting options ]]
@@ -239,8 +239,14 @@ require('lazy').setup({
 -- Set highlight on search
 vim.o.hlsearch = false
 
--- Make line numbers default
+-- Set relative line numbers and current line
+vim.wo.relativenumber = true
 vim.wo.number = true
+
+-- Set current line number white and others gray
+vim.api.nvim_set_hl(0, 'LineNr', { fg = "white"})
+vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = "grey"})
+vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = "grey"})
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
